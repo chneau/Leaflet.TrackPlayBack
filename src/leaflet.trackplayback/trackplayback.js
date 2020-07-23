@@ -1,17 +1,8 @@
 import L from 'leaflet'
-
-import {
-  Track
-} from './track'
-import {
-  TrackController
-} from './trackcontroller'
-import {
-  Clock
-} from './clock'
-import {
-  Draw
-} from './draw'
+import { Clock } from './clock'
+import { Draw } from './draw'
+import { Track } from './track'
+import { TrackController } from './trackcontroller'
 import * as Util from './util'
 
 /**
@@ -23,7 +14,7 @@ import * as Util from './util'
  */
 export const TrackPlayBack = L.Class.extend({
 
-  includes: L.Mixin.Events,
+  includes: L.Evented.prototype,
 
   initialize: function (data, map, options = {}) {
     const drawOptions = {

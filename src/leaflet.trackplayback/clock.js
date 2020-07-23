@@ -4,7 +4,7 @@ import L from 'leaflet'
  */
 export const Clock = L.Class.extend({
 
-  includes: L.Mixin.Events,
+  includes: L.Evented.prototype,
 
   options: {
     // 播放速度
