@@ -7,7 +7,7 @@ export const TrackPlayBackControl = L.Control.extend({
     showOptions: true,
     showInfo: true,
     showSlider: true,
-    autoPlay: false
+    autoPlay: true
   },
 
   initialize: function (trackplayback, options) {
