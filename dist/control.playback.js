@@ -27,11 +27,11 @@ export const TrackPlayBackControl = L.Control.extend({
   },
 
   /**
-   * 根据unix时间戳(单位:秒)获取时间字符串
-   * @param  {[int]} time     [时间戳（精确到秒）]
-   * @param  {[string]} accuracy [精度，日：d, 小时：h,分钟：m,秒：s]
-   * @return {[string]}          [yy:mm:dd hh:mm:ss]
-   */
+     * Obtain the time string according to the unix timestamp (unit: second)
+     * @param {[int]} time [time stamp (accurate to the second)]
+     * @param {[string]} accuracy [accuracy, day: d, hour: h, minute: m, second: s]
+     * @return {[string]} [yy:mm:dd hh:mm:ss]
+     */
   getTimeStrFromUnix: function (time, accuracy = 's') {
     time = parseInt(time * 1000)
     const newDate = new Date(time)
@@ -110,8 +110,8 @@ export const TrackPlayBackControl = L.Control.extend({
     link.title = title
 
     /*
-     * Will force screen readers like VoiceOver to read this as "Zoom in - button"
-     */
+         * Will force screen readers like VoiceOver to read this as "Zoom in - button"
+         */
     link.setAttribute('role', 'button')
     link.setAttribute('aria-label', title)
 
@@ -177,7 +177,7 @@ export const TrackPlayBackControl = L.Control.extend({
   },
 
   _restart: function () {
-    // 播放开始改变播放按钮样式
+    // start playing and change the play button style
     L.DomUtil.removeClass(this._playBtn, 'btn-stop')
     L.DomUtil.addClass(this._playBtn, 'btn-start')
     this._playBtn.setAttribute('title', 'stop')
@@ -210,12 +210,12 @@ export const TrackPlayBackControl = L.Control.extend({
   },
 
   _tickCallback: function (e) {
-    // 更新时间
+    // update time
     const time = this.getTimeStrFromUnix(e.time)
     this._infoCurTime.innerHTML = time
-    // 更新时间轴
+    // update timeline
     this._slider.value = e.time
-    // 播放结束后改变播放按钮样式
+    // Change the play button style after playing
     if (e.time >= this.trackPlayBack.getEndTime()) {
       L.DomUtil.removeClass(this._playBtn, 'btn-start')
       L.DomUtil.addClass(this._playBtn, 'btn-stop')
