@@ -19,13 +19,15 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
-        libraryTarget : 'umd'
+        libraryTarget: 'umd'
     },
     plugins: [
-        new CopyWebpackPlugin([{
-            from: path.resolve(__dirname, 'src/control.trackplayback'),
-            to: path.resolve(__dirname, 'dist'),
-            ignore: ['*.js']
-        }])
+        new CopyWebpackPlugin({
+            patterns: [{
+                from: path.resolve(__dirname, 'src/control.trackplayback'),
+                to: path.resolve(__dirname, 'dist'),
+                globOptions: { ignore: ['*.js'] }
+            }]
+        })
     ]
 }
