@@ -3,7 +3,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     mode: 'production',
-    devtool: 'source-map',
     entry: {
         'control.trackplayback': './src/control.trackplayback/index.js',
         'leaflet.trackplayback': './src/leaflet.trackplayback/index.js'
@@ -21,12 +20,17 @@ module.exports = {
         filename: '[name].js',
         libraryTarget: 'umd'
     },
+    optimization: {
+        minimize: false
+    },
     plugins: [
         new CopyWebpackPlugin({
             patterns: [{
-                from: path.resolve(__dirname, 'src/control.trackplayback'),
-                to: path.resolve(__dirname, 'dist'),
-                globOptions: { ignore: ['*.js'] }
+                from: path.resolve(__dirname, 'src/control.trackplayback/images'),
+                to: path.resolve(__dirname, 'dist/images')
+            }, {
+                from: path.resolve(__dirname, 'src/control.trackplayback/control.playback.css'),
+                to: path.resolve(__dirname, 'dist/control.playback.css')
             }]
         })
     ]
