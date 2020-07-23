@@ -1,5 +1,7 @@
 # Leaflet.TrackPlayBack
 
+#此版本为control汉化版
+
 ## Introduce
 
 It's a track playback plugin based on leaflet and HTML5 canvas.

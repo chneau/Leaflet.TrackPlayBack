@@ -1,6 +1,9 @@
 .leaflet-control-playback {
     position: relative;
-    background-color: #7cbdf5;
+    background: #fff;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-clip: padding-box;
+    border-radius: 5px;
     padding: 10px;
 }
 
@@ -10,6 +13,10 @@
 
 .leaflet-control-playback .optionsContainer>div {
     display: inline-block;
+}
+
+.show-trackLine.trackplayback-checkbox {
+    float: right;
 }
 
 .leaflet-control-playback .buttonContainer a {
