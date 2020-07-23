@@ -34,13 +34,13 @@ export const TrackPlayBackControl = L.Control.extend({
    */
   getTimeStrFromUnix: function (time, accuracy = 's') {
     time = parseInt(time * 1000)
-    let newDate = new Date(time)
-    let year = newDate.getFullYear()
-    let month = (newDate.getMonth() + 1) < 10 ? '0' + (newDate.getMonth() + 1) : newDate.getMonth() + 1
-    let day = newDate.getDate() < 10 ? '0' + newDate.getDate() : newDate.getDate()
-    let hours = newDate.getHours() < 10 ? '0' + newDate.getHours() : newDate.getHours()
-    let minuts = newDate.getMinutes() < 10 ? '0' + newDate.getMinutes() : newDate.getMinutes()
-    let seconds = newDate.getSeconds() < 10 ? '0' + newDate.getSeconds() : newDate.getSeconds()
+    const newDate = new Date(time)
+    const year = newDate.getFullYear()
+    const month = (newDate.getMonth() + 1) < 10 ? '0' + (newDate.getMonth() + 1) : newDate.getMonth() + 1
+    const day = newDate.getDate() < 10 ? '0' + newDate.getDate() : newDate.getDate()
+    const hours = newDate.getHours() < 10 ? '0' + newDate.getHours() : newDate.getHours()
+    const minuts = newDate.getMinutes() < 10 ? '0' + newDate.getMinutes() : newDate.getMinutes()
+    const seconds = newDate.getSeconds() < 10 ? '0' + newDate.getSeconds() : newDate.getSeconds()
     let ret
     if (accuracy === 'd') {
       ret = year + '-' + month + '-' + day
@@ -88,14 +88,14 @@ export const TrackPlayBackControl = L.Control.extend({
   },
 
   _createCheckbox: function (labelName, className, container, fn) {
-    let divEle = L.DomUtil.create('div', className + ' trackplayback-checkbox', container)
+    const divEle = L.DomUtil.create('div', className + ' trackplayback-checkbox', container)
 
-    let inputEle = L.DomUtil.create('input', 'trackplayback-input', divEle)
-    let inputId = `trackplayback-input-${L.Util.stamp(inputEle)}`
+    const inputEle = L.DomUtil.create('input', 'trackplayback-input', divEle)
+    const inputId = `trackplayback-input-${L.Util.stamp(inputEle)}`
     inputEle.setAttribute('type', 'checkbox')
     inputEle.setAttribute('id', inputId)
 
-    let labelEle = L.DomUtil.create('label', 'trackplayback-label', divEle)
+    const labelEle = L.DomUtil.create('label', 'trackplayback-label', divEle)
     labelEle.setAttribute('for', inputId)
     labelEle.innerHTML = labelName
 
@@ -105,7 +105,7 @@ export const TrackPlayBackControl = L.Control.extend({
   },
 
   _createButton: function (title, className, container, fn) {
-    let link = L.DomUtil.create('a', className, container)
+    const link = L.DomUtil.create('a', className, container)
     link.href = '#'
     link.title = title
 
@@ -122,16 +122,16 @@ export const TrackPlayBackControl = L.Control.extend({
   },
 
   _createInfo: function (title, info, className, container) {
-    let infoContainer = L.DomUtil.create('div', 'info-container', container)
-    let infoTitle = L.DomUtil.create('span', 'info-title', infoContainer)
+    const infoContainer = L.DomUtil.create('div', 'info-container', container)
+    const infoTitle = L.DomUtil.create('span', 'info-title', infoContainer)
     infoTitle.innerHTML = title
-    let infoEle = L.DomUtil.create('span', className, infoContainer)
+    const infoEle = L.DomUtil.create('span', className, infoContainer)
     infoEle.innerHTML = info
     return infoEle
   },
 
   _createSlider: function (className, container, fn) {
-    let sliderEle = L.DomUtil.create('input', className, container)
+    const sliderEle = L.DomUtil.create('input', className, container)
     sliderEle.setAttribute('type', 'range')
     sliderEle.setAttribute('min', this.trackPlayBack.getStartTime())
     sliderEle.setAttribute('max', this.trackPlayBack.getEndTime())
@@ -162,7 +162,7 @@ export const TrackPlayBackControl = L.Control.extend({
   },
 
   _play: function () {
-    let hasClass = L.DomUtil.hasClass(this._playBtn, 'btn-stop')
+    const hasClass = L.DomUtil.hasClass(this._playBtn, 'btn-stop')
     if (hasClass) {
       L.DomUtil.removeClass(this._playBtn, 'btn-stop')
       L.DomUtil.addClass(this._playBtn, 'btn-start')
@@ -186,13 +186,13 @@ export const TrackPlayBackControl = L.Control.extend({
 
   _slow: function () {
     this.trackPlayBack.slowSpeed()
-    let sp = this.trackPlayBack.getSpeed()
+    const sp = this.trackPlayBack.getSpeed()
     this._infoSpeedRatio.innerHTML = `X${sp}`
   },
 
   _quick: function () {
     this.trackPlayBack.quickSpeed()
-    let sp = this.trackPlayBack.getSpeed()
+    const sp = this.trackPlayBack.getSpeed()
     this._infoSpeedRatio.innerHTML = `X${sp}`
   },
 
@@ -205,13 +205,13 @@ export const TrackPlayBackControl = L.Control.extend({
   },
 
   _scrollchange: function (e) {
-    let val = Number(e.target.value)
+    const val = Number(e.target.value)
     this.trackPlayBack.setCursor(val)
   },
 
   _tickCallback: function (e) {
     // 更新时间
-    let time = this.getTimeStrFromUnix(e.time)
+    const time = this.getTimeStrFromUnix(e.time)
     this._infoCurTime.innerHTML = time
     // 更新时间轴
     this._slider.value = e.time

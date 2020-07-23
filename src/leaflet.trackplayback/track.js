@@ -31,7 +31,7 @@ export const Track = L.Class.extend({
   },
 
   getTimes: function () {
-    let times = []
+    const times = []
     for (let i = 0, len = this._trackPoints.length; i < len; i++) {
       times.push(this._trackPoints[i].time)
     }
@@ -55,7 +55,7 @@ export const Track = L.Class.extend({
     let endpoint = this.getTrackPointByTime(time)
     let startPt = this.getStartTrackPoint()
     let endPt = this.getEndTrackPoint()
-    let times = this.getTimes()
+    const times = this.getTimes()
     if (time < startPt.time || time > endPt.time) return
     let left = 0
     let right = times.length - 1
@@ -71,14 +71,14 @@ export const Track = L.Class.extend({
       else right = n
     }
 
-    let t0 = times[left]
-    let t1 = times[right]
-    let t = time
-    let p0 = this.getTrackPointByTime(t0)
-    let p1 = this.getTrackPointByTime(t1)
+    const t0 = times[left]
+    const t1 = times[right]
+    const t = time
+    const p0 = this.getTrackPointByTime(t0)
+    const p1 = this.getTrackPointByTime(t1)
     startPt = L.point(p0.lng, p0.lat)
     endPt = L.point(p1.lng, p1.lat)
-    let s = startPt.distanceTo(endPt)
+    const s = startPt.distanceTo(endPt)
     // 不同时间在同一个点情形
     if (s <= 0) {
       endpoint = p1
@@ -86,15 +86,15 @@ export const Track = L.Class.extend({
     }
     // 假设目标在两点间做匀速直线运动
     // 求解速度向量，并计算时间 t 目标所在位置
-    let v = s / (t1 - t0)
-    let sinx = (endPt.y - startPt.y) / s
-    let cosx = (endPt.x - startPt.x) / s
-    let step = v * (t - t0)
-    let x = startPt.x + step * cosx
-    let y = startPt.y + step * sinx
+    const v = s / (t1 - t0)
+    const sinx = (endPt.y - startPt.y) / s
+    const cosx = (endPt.x - startPt.x) / s
+    const step = v * (t - t0)
+    const x = startPt.x + step * cosx
+    const y = startPt.y + step * sinx
     // 求目标的运动方向，0-360度
-    let dir = endPt.x >= startPt.x ? (Math.PI * 0.5 - Math.asin(sinx)) * 180 / Math.PI : (Math.PI * 1.5 + Math.asin(sinx)) * 180 / Math.PI
-      
+    const dir = endPt.x >= startPt.x ? (Math.PI * 0.5 - Math.asin(sinx)) * 180 / Math.PI : (Math.PI * 1.5 + Math.asin(sinx)) * 180 / Math.PI
+
     if (endpoint) {
       if (endpoint.dir === undefined) {
         endpoint.dir = dir
@@ -113,14 +113,14 @@ export const Track = L.Class.extend({
 
   // 获取某个时间点之前走过的轨迹
   getTrackPointsBeforeTime: function (time) {
-    let tpoints = []
+    const tpoints = []
     for (let i = 0, len = this._trackPoints.length; i < len; i++) {
       if (this._trackPoints[i].time < time) {
         tpoints.push(this._trackPoints[i])
       }
     }
     // 获取最后一个点，根据时间线性插值而来
-    let endPt = this._getCalculateTrackPointByTime(time)
+    const endPt = this._getCalculateTrackPointByTime(time)
     if (endPt) {
       tpoints.push(endPt)
     }
@@ -140,11 +140,11 @@ export const Track = L.Class.extend({
 
   // 轨迹点按时间排序 【冒泡排序】
   _sortTrackPointsByTime: function () {
-    let len = this._trackPoints.length
+    const len = this._trackPoints.length
     for (let i = 0; i < len; i++) {
       for (let j = 0; j < len - 1 - i; j++) {
         if (this._trackPoints[j].time > this._trackPoints[j + 1].time) {
-          let tmp = this._trackPoints[j + 1]
+          const tmp = this._trackPoints[j + 1]
           this._trackPoints[j + 1] = this._trackPoints[j]
           this._trackPoints[j] = tmp
         }

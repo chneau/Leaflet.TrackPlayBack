@@ -26,7 +26,7 @@ export const TrackPlayBack = L.Class.extend({
   includes: L.Mixin.Events,
 
   initialize: function (data, map, options = {}) {
-    let drawOptions = {
+    const drawOptions = {
       trackPointOptions: options.trackPointOptions,
       trackLineOptions: options.trackLineOptions,
       targetOptions: options.targetOptions,
@@ -110,7 +110,7 @@ export const TrackPlayBack = L.Class.extend({
     this.fire('tick', e)
   },
   _initTracks: function (data) {
-    let tracks = []
+    const tracks = []
     if (Util.isArray(data)) {
       if (Util.isArray(data[0])) {
         // 多条轨迹
