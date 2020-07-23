@@ -64,8 +64,8 @@ export const TrackPlayBackControl = L.Control.extend({
     this._infoContainer = this._createContainer('infoContainer', this._container)
     this._sliderContainer = this._createContainer('sliderContainer', this._container)
 
-    this._pointCbx = this._createCheckbox('show trackPoint', 'show-trackpoint', this._optionsContainer, this._showTrackPoint)
-    this._lineCbx = this._createCheckbox('show trackLine', 'show-trackLine', this._optionsContainer, this._showTrackLine)
+    this._pointCbx = this._createCheckbox('show point', 'show-trackpoint', this._optionsContainer, this._showTrackPoint)
+    this._lineCbx = this._createCheckbox('show line', 'show-trackLine', this._optionsContainer, this._showTrackLine)
 
     this._playBtn = this._createButton('play', 'btn-stop', this._buttonContainer, this._play)
     this._restartBtn = this._createButton('replay', 'btn-restart', this._buttonContainer, this._restart)
@@ -73,10 +73,10 @@ export const TrackPlayBackControl = L.Control.extend({
     this._quickSpeedBtn = this._createButton('quick', 'btn-quick', this._buttonContainer, this._quick)
     this._closeBtn = this._createButton('close', 'btn-close', this._buttonContainer, this._close)
 
-    this._infoStartTime = this._createInfo('startTime: ', this.getTimeStrFromUnix(this.trackPlayBack.getStartTime()), 'info-start-time', this._infoContainer)
-    this._infoEndTime = this._createInfo('endTime: ', this.getTimeStrFromUnix(this.trackPlayBack.getEndTime()), 'info-end-time', this._infoContainer)
-    this._infoCurTime = this._createInfo('curTime: ', this.getTimeStrFromUnix(this.trackPlayBack.getCurTime()), 'info-cur-time', this._infoContainer)
-    this._infoSpeedRatio = this._createInfo('speed: ', `X${this.trackPlayBack.getSpeed()}`, 'info-speed-ratio', this._infoContainer)
+    this._infoStartTime = this._createInfo('start: ', this.getTimeStrFromUnix(this.trackPlayBack.getStartTime()), 'info-start-time', this._infoContainer)
+    this._infoEndTime = this._createInfo('end: ', this.getTimeStrFromUnix(this.trackPlayBack.getEndTime()), 'info-end-time', this._infoContainer)
+    this._infoCurTime = this._createInfo('cur: ', this.getTimeStrFromUnix(this.trackPlayBack.getCurTime()), 'info-cur-time', this._infoContainer)
+    this._infoSpeedRatio = this._createInfo('speed: ', `x${this.trackPlayBack.getSpeed()}`, 'info-speed-ratio', this._infoContainer)
 
     this._slider = this._createSlider('time-slider', this._sliderContainer, this._scrollchange)
 
