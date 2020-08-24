@@ -1,6 +1,6 @@
 # Leaflet.TrackPlayBack
 
-#此版本为control汉化版
+#此版本为 control 汉化版
 
 ## Introduce
 
@@ -30,8 +30,8 @@ npm i leaflet-plugin-trackplayback
 example:
 
 ```js
-import L from 'leaflet'
-import 'leaflet-plugin-trackplayback'
+import L from "leaflet";
+import "leaflet-plugin-trackplayback";
 
 const trackplayback = L.trackplayback(data, map);
 // or
@@ -41,28 +41,28 @@ const trackplayback = new L.TrackPlayBack(data, map);
 Using script tag:
 
 ```html
-  <link rel="stylesheet" href="./lib/leaflet/leaflet.css">
+<link rel="stylesheet" href="./lib/leaflet/leaflet.css" />
 
-  <!--Optional (only if you need plaback control)-->
-  <link rel="stylesheet" href="../dist/control.playback.css">
+<!--Optional (only if you need plaback control)-->
+<link rel="stylesheet" href="../dist/control.playback.css" />
 
-  <script src="./lib/leaflet/leaflet.js"></script>
+<script src="./lib/leaflet/leaflet.js"></script>
 
-  <!--Optional (only if you need plaback control)-->
-  <script src="../dist/control.trackplayback.js"></script>
+<!--Optional (only if you need plaback control)-->
+<script src="../dist/control.trackplayback.js"></script>
 
-  <script src="../dist/leaflet.trackplayback.js"></script>
+<script src="../dist/leaflet.trackplayback.js"></script>
 ```
 
 example:
 
 ```js
-    const trackplayback = L.trackplayback(data, map);
+const trackplayback = L.trackplayback(data, map);
 
-    // Optional  (only if you need plaback control)
-    const trackplaybackControl = L.trackplaybackcontrol(trackplayback);
+// Optional  (only if you need plaback control)
+const trackplaybackControl = L.trackplaybackcontrol(trackplayback);
 
-    trackplaybackControl.addTo(map);
+trackplaybackControl.addTo(map);
 ```
 
 ## API reference
@@ -106,7 +106,7 @@ const Options = {
     // fpstime is the two frame time difference
     speed: 13,
     // the max speed
-    maxSpeed: 65
+    maxSpeed: 65,
   },
   // trackPoint options
   trackPointOptions: {
@@ -115,49 +115,52 @@ const Options = {
     // whether use canvas to draw it, if false, use leaflet api `L.circleMarker`
     useCanvas: true,
     stroke: false,
-    color: '#ef0300',
+    color: "#ef0300",
     fill: true,
-    fillColor: '#ef0300',
+    fillColor: "#ef0300",
     opacity: 0.3,
-    radius: 4
+    radius: 4,
   },
   // trackLine options
   trackLineOptions: {
     // whether draw track line
     isDraw: false,
     stroke: true,
-    color: '#1C54E2',
+    color: "#1C54E2",
     weight: 2,
     fill: false,
-    fillColor: '#000',
-    opacity: 0.3
+    fillColor: "#000",
+    opacity: 0.3,
   },
   // target options
   targetOptions: {
     // whether use image to display target, if false, the program provide a default
     useImg: false,
     // if useImg is true, provide the imgUrl
-    imgUrl: '../../static/images/ship.png',
+    imgUrl: "../../static/images/ship.png",
     // the width of target, unit: px
     width: 8,
     // the height of target, unit: px
     height: 18,
     // the stroke color of target, effective when useImg set false
-    color: '#00f',
+    color: "#00f",
     // the fill color of target, effective when useImg set false
-    fillColor: '#9FD12D'
-  }
-}
-
+    fillColor: "#9FD12D",
+  },
+};
 ```
 
 ### events
 
 ```js
 // trigger on time change
-trackplayback.on('tick', e => {
-  console.log(e.time)
-}, this)
+trackplayback.on(
+  "tick",
+  (e) => {
+    console.log(e.time);
+  },
+  this
+);
 ```
 
 ### methods
