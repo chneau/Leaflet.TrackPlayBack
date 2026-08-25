@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/linghuam/Leaflet.TrackPlayback#readme",
   "devDependencies": {
-    "copy-webpack-plugin": "^6.0.3",
+    "copy-webpack-plugin": "^14.0.0",
     "prettier": "^2.0.5",
     "serve": "^11.3.2",
     "webpack": "^4.44.1",
